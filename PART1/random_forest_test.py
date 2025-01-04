@@ -18,7 +18,7 @@ import torch
 # Load the Dataset
 from medmnist import INFO
 info = INFO['breastmnist']
-
+print(info)
 # Load train, validation, and test splits from BreastMNIST
 train_data = BreastMNIST(split='train', download=True)
 val_data = BreastMNIST(split='val', download=True)
@@ -29,7 +29,7 @@ X_train, y_train = np.array(train_data.imgs), np.array(train_data.labels)
 X_val, y_val = np.array(val_data.imgs), np.array(val_data.labels)
 X_test, y_test = np.array(test_data.imgs), np.array(test_data.labels)
 
-# Reshape and normalize the data
+# Reshape (flatten) and normalize the data
 X_train = X_train.reshape(X_train.shape[0], -1) / 255.0
 X_val = X_val.reshape(X_val.shape[0], -1) / 255.0
 X_test = X_test.reshape(X_test.shape[0], -1) / 255.0
@@ -38,39 +38,55 @@ X_test = X_test.reshape(X_test.shape[0], -1) / 255.0
 X_combined = np.concatenate((X_train, X_val), axis=0)
 y_combined = np.concatenate((y_train, y_val), axis=0).flatten()
 
-# Hyperparameter Tuning for Random Forest
-acc_test_22 = []
-max_depth_11 = []
-max_features_11 = []
+# Compute class weights for handling imbalance
+breast_class_weights = compute_class_weight(
+    class_weight='balanced',
+    classes=np.unique(y_combined),
+    y=y_combined
+)
 
-for max_depth_1 in range(10, 30):  # Range for max_depth
-    for max_features_1 in range(10, 30):  # Range for max_features
-        print(f"Evaluating max_depth={max_depth_1}, max_features={max_features_1}")
-        classifier = RandomForestClassifier(max_depth=max_depth_1, max_features=max_features_1, random_state=0)
+# Hyperparameter Tuning for Random Forest
+acc_test_list = []
+max_depth_list = []
+max_features_list = []
+
+for max_depth in range(10, 30):  # Range for max_depth
+    for max_features in range(10, 30):  # Range for max_features
+        print(f"Evaluating max_depth={max_depth}, max_features={max_features}")
+        classifier = RandomForestClassifier(
+            max_depth=max_depth, 
+            max_features=max_features, 
+            random_state=0
+        )
         classifier.fit(X_combined, y_combined)  # Fit the model
 
         # Predict and evaluate on test set
         pred_y = classifier.predict(X_test)
-        acc_test_2 = accuracy_score(y_test.flatten(), pred_y)
-        acc_test_22.append(acc_test_2)
+        acc_test_test = accuracy_score(y_test.flatten(), pred_y)
+        acc_test_list.append(acc_test_test)
 
-        print(f"Accuracy: {acc_test_2}")
-        max_depth_11.append(max_depth_1)
-        max_features_11.append(max_features_1)
+        print(f"Accuracy: {acc_test_test}")
+        max_depth_list.append(max_depth)
+        max_features_list.append(max_features)
 
 # Find the best hyperparameters
-max_value = max(acc_test_22)
-max_index = acc_test_22.index(max_value)
+max_value = max(acc_test_list)
+max_index = acc_test_list.index(max_value)
 
-best_max_depth = max_depth_11[max_index]
-best_max_features = max_features_11[max_index]
+best_max_depth = max_depth_list[max_index]
+best_max_features = max_features_list[max_index]
 
 print("Best hyperparameters:")
 print(f"max_depth: {best_max_depth}")
 print(f"max_features: {best_max_features}")
 
 # Train final model with best hyperparameters
-final_classifier = RandomForestClassifier(max_depth=best_max_depth, max_features=best_max_features, random_state=0)
+final_classifier = RandomForestClassifier(
+    max_depth=best_max_depth, 
+    max_features=best_max_features, 
+    class_weight=weights, 
+    random_state=0
+)
 final_classifier.fit(X_combined, y_combined)
 
 # Evaluate final model
