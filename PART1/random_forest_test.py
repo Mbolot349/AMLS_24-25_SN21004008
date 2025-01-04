@@ -84,7 +84,6 @@ print(f"max_features: {best_max_features}")
 final_classifier = RandomForestClassifier(
     max_depth=best_max_depth, 
     max_features=best_max_features, 
-    class_weight=weights, 
     random_state=0
 )
 final_classifier.fit(X_combined, y_combined)
