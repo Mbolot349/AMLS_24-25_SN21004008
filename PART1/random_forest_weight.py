@@ -13,7 +13,9 @@ from sklearn.metrics import (
 )
 from sklearn.utils.class_weight import compute_class_weight
 from medmnist import BreastMNIST
-import torch
+from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
+import joblib
 
 # Load the Dataset
 from medmnist import INFO
@@ -53,7 +55,7 @@ max_features_list = []
 
 for max_depth in range(10, 30):  # Range for max_depth
     for max_features in range(10, 30):  # Range for max_features
-        print(f"Evaluating max_depth={max_depth}, max_features={max_features}")
+        print(f"Evaluating max depth={max_depth}, max features={max_features}")
         classifier = RandomForestClassifier(
             max_depth=max_depth, 
             max_features=max_features, 
@@ -72,8 +74,8 @@ for max_depth in range(10, 30):  # Range for max_depth
         max_features_list.append(max_features)
 
 # Find the best hyperparameters
-max_value = max(acc_test_list)
-max_index = acc_test_list.index(max_value)
+max_accuracy = max(acc_test_list)
+max_index = acc_test_list.index(max_accuracy)
 
 best_max_depth = max_depth_list[max_index]
 best_max_features = max_features_list[max_index]
@@ -103,3 +105,25 @@ cm = confusion_matrix(y_test.flatten(), final_predictions)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['malignant', 'benign/normal'])
 disp.plot(cmap=plt.cm.Blues)
 plt.show()
+joblib.dump(final_classifier, "my_random_forest_final.joblib")
+
+
+
+
+precision = precision_score(y_test,final_predictions, average='weighted')
+print('Precision: %f' % precision)
+#recall:tp/(tp+fn)
+recall = recall_score(y_test,final_predictions, average='weighted')
+print('Recall: %f' % recall)
+
+f1 = f1_score(y_test,final_predictions, average='weighted')
+print('F1 score: %f' % f1)
+
+print ('IoU:', jaccard_score(y_test,final_predictions, average='micro'))
+
+print("Accuracy_test:",accuracy_score(y_test,final_predictions))
+
+from sklearn.metrics import roc_auc_score, roc_curve
+final_predictions_proba = final_classifier.predict_proba(X_test)[:, 1]#
+roc_auc = roc_auc_score(y_test, final_predictions_proba)
+print(f"ROC-AUC: {roc_auc:.4f}")
