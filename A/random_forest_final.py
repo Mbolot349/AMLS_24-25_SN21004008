@@ -105,7 +105,7 @@ cm = confusion_matrix(y_test.flatten(), final_predictions)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['malignant', 'benign/normal'])
 disp.plot(cmap=plt.cm.Blues)
 plt.show()
-joblib.dump(final_classifier, "my_random_forest_final.joblib")
+joblib.dump(final_classifier, "my_random_forest_part1.joblib")
 
 
 
