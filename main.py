@@ -13,7 +13,7 @@ print("SVM model finished")
 
 
 
-script_path_1 = os.path.join('A', 'random_forest_weight.py')
+script_path_1 = os.path.join('A', 'random_forest_final.py')
 print("running random forest model for task 1")
 subprocess.run(['python', script_path_1])
 print("Random Forest model finished")
