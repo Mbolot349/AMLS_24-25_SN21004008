@@ -18,7 +18,7 @@ print("================================See A/random_forest_final.py for model tr
 subprocess.run(['python', script_path_1])
 print("==================================Random Forest model finished=====================================================================")
 
-script_path_2 = os.path.join('A', 'load.py')
+script_path_2 = os.path.join('A', 'load_CNN_part1.py')
 print("Final Deep Learning Model Loading")
 print("loading CNN model and testing")
 subprocess.run(['python', script_path_2])
