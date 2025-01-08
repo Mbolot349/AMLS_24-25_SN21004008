@@ -5,9 +5,13 @@ from tensorflow.keras.utils import to_categorical, normalize
 from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
 # Path to the files
-keras_model_path = "task2.keras"
 
-weights_path = "weights_task2.weights.h5"
+import os
+folder = os.path.dirname(__file__)  # folder in which the script is located
+keras_model_path = os.path.join(folder, 'task2.keras')
+weights_path  = os.path.join(folder, 'weights_task2.weights.h5')
+
+
 
 # Load the .keras file if available
 try:
@@ -22,6 +26,7 @@ except Exception as e:
 
 # Verify model summary
 try:
+    print("=========================model_summary======================================")
     model.summary()
 except Exception as e:
     print("Could not display model summary. Error:", e)
