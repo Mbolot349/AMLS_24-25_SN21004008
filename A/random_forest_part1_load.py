@@ -25,8 +25,10 @@ X_test, y_test = np.array(test_data.imgs), np.array(test_data.labels)
 # Reshape (flatten) and normalize the data
 X_test = X_test.reshape(X_test.shape[0], -1) / 255.0
 
+import os
+folder = os.path.dirname(__file__)  # folder in which the script is located
+model_path = os.path.join(folder, 'my_random_forest_part1.joblib')
 
-model_path = 'my_random_forest_part1.joblib'
 
 loaded_model = joblib.load(model_path)
 print("model has been loaded")
