@@ -5,7 +5,7 @@ print("=========================part1 executing==========================")
 script_path = os.path.join('A', 'svm_part1.py')
 
 # Call the script with python
-
+print("..................................................During the following script please close images to progress through the script..............................")
 print("running the SVM Model for part 1")
 subprocess.run(['python', script_path])
 print("============================================SVM model finished==============================================")
@@ -19,7 +19,7 @@ subprocess.run(['python', script_path_1])
 print("==================================Random Forest model finished=====================================================================")
 
 script_path_2 = os.path.join('A', 'load_CNN_part1.py')
-print("Final Deep Learning Model Loading")
+print("Deep Learning CNN with Adam optimiser loading")
 print("loading CNN model and testing")
 print("For training please see A/neaural_final.py")
 subprocess.run(['python', script_path_2])
@@ -33,7 +33,7 @@ script_path_3 = os.path.join('B', 'random_forest_part2_load.py')
 subprocess.run(['python', script_path_3])
 print("==================RANDOM_FOREST PART 2 HAS FINISHED=======================")
 
-print("=========================================TASK 2 CNN=============================================")
+print("=========================================TASK 2 CNN model loading=============================================")
 print("For CNN training please see B/part2_CNN.py")
 script_path_4 = os.path.join('B', 'load_CNN_part2.py')
 subprocess.run(['python', script_path_4])
