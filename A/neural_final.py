@@ -1,65 +1,14 @@
-
-import cv2 as cv
-import os 
-import pandas as pd 
-import matplotlib.pyplot as plt
 import numpy as np
-from pathlib import Path
-from keras.models import model_from_json
-
-import tensorflow as tf
-from tensorflow.keras.layers import Normalization
-from tensorflow.keras import optimizers
+import matplotlib.pyplot as plt
 from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Activation, Dropout, Flatten, Dense
-from tensorflow.keras.layers import BatchNormalization
-from tensorflow.keras import regularizers
-from tensorflow import keras
-from tensorflow.keras import regularizers 
-from tensorflow.keras import layers, models, regularizers
-from tensorflow.keras import regularizers
-
-from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
-
-
-
-
-
-
-from sklearn.utils import shuffle
-
+from keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense, Activation
 from tensorflow.keras.callbacks import EarlyStopping
-
-
-
-
-
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import (
-    accuracy_score,
-    classification_report,
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    roc_curve,
-    auc,
-)
 from sklearn.utils.class_weight import compute_class_weight
+from sklearn.metrics import confusion_matrix, classification_report, precision_score, recall_score, f1_score, jaccard_score, accuracy_score, roc_auc_score, ConfusionMatrixDisplay
 from medmnist import BreastMNIST
-import torch
-
-import pickle
-
-from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
-
-# Load the Dataset
 from medmnist import INFO
+from pathlib import Path
+
 info = INFO['breastmnist']
 
 # Load train, validation, and test splits from BreastMNIST
