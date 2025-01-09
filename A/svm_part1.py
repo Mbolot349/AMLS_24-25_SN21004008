@@ -33,13 +33,13 @@ X_test, y_test = np.array(test_data.imgs), np.array(test_data.labels)
 X_train = X_train.reshape(X_train.shape[0], -1) / 255.0
 X_val = X_val.reshape(X_val.shape[0], -1) / 255.0
 X_test = X_test.reshape(X_test.shape[0], -1) / 255.0
-print(X_train.shape)
+
 # Combine train and validation sets for better training
 X_combined = np.concatenate((X_train, X_val), axis=0)
 y_combined = np.concatenate((y_train, y_val), axis=0).flatten()
-print(X_combined.shape)
-print("^That was commbined")
-print(y_combined.shape)
+print("shape of training data, images:",X_combined.shape)
+
+print("shape of training data, labels:",y_combined.shape)
 # Mapping numeric labels to text labels
 label_map = {0: 'malignant', 1: 'benign/normal'}
 
