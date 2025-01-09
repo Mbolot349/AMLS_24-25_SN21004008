@@ -51,13 +51,13 @@ y_test_text = np.array([label_map[label[0]] for label in y_test])
 
 # Visualize some training images
 # Reshape the flattened images back to 28x28 for visualization
-fig, axes = plt.subplots(1, 5, figsize=(15, 3))
-for i, ax in enumerate(axes.flat):
-    ax.imshow(X_train[i].reshape(28, 28), cmap='gray')  # Reshape to 28x28
-    ax.set_title(f"Label: {y_train_text[i]}")
-    ax.axis('off')  # Turn off the axis for better visualization
-plt.tight_layout()
-plt.show()
+#fig, axes = plt.subplots(1, 5, figsize=(15, 3))
+#for i, ax in enumerate(axes.flat):
+#    ax.imshow(X_train[i].reshape(28, 28), cmap='gray')  # Reshape to 28x28
+#    ax.set_title(f"Label: {y_train_text[i]}")
+#    ax.axis('off')  # Turn off the axis for better visualization
+#plt.tight_layout()
+#plt.show()
 breast_class_weights = compute_class_weight(
     class_weight='balanced',
     classes=np.unique(y_combined),
