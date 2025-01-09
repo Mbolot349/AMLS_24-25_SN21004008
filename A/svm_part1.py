@@ -8,16 +8,15 @@ from sklearn.metrics import (
     classification_report,
     confusion_matrix,
     ConfusionMatrixDisplay,
-    roc_curve,
-    auc,
+    precision_score,
+    recall_score,
+    f1_score,
+    jaccard_score,
+    roc_auc_score,
 )
-from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
-
-from medmnist import BreastMNIST
-
-from medmnist import INFO, Evaluator
 from sklearn.utils.class_weight import compute_class_weight
+from medmnist import BreastMNIST, INFO
+
 info = INFO['breastmnist']
 
 # Load train, validation, and test splits from BreastMNIST
