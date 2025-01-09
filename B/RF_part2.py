@@ -1,26 +1,22 @@
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
     confusion_matrix,
     ConfusionMatrixDisplay,
-    roc_curve,
-    auc,
+    precision_score,
+    recall_score,
+    f1_score,
+    jaccard_score,
+    roc_auc_score,
 )
 from sklearn.utils.class_weight import compute_class_weight
-from medmnist import BloodMNIST
-from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
+from medmnist import BloodMNIST, INFO
 import joblib
-from sklearn.utils import class_weight
-from sklearn.utils.class_weight import compute_class_weight
 
-# Load the Dataset
-from medmnist import INFO
 info = INFO['bloodmnist']
 print(info)
 # Load train, validation, and test splits from BreastMNIST
