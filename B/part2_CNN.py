@@ -1,9 +1,11 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense, Activation
-from keras.preprocessing.image import ImageDataGenerator
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.utils import to_categorical, normalize
 from sklearn.metrics import (
     confusion_matrix,
@@ -18,7 +20,7 @@ from sklearn.metrics import (
 )
 from sklearn.utils.class_weight import compute_class_weight
 from medmnist import BloodMNIST, INFO
-from tensorflow import keras
+
 
 info = INFO['bloodmnist']
 print(info)
@@ -139,7 +141,7 @@ datagen = ImageDataGenerator(
 datagen.fit(X_train)
 
 #============================= Fitting the model with flow the data Augmented 
-history1 = model.fit(
+history = model.fit(
     datagen.flow(X_train, y_train, batch_size=32,shuffle=True),
     steps_per_epoch = math.ceil(len(X_train) / 32),
     epochs=100,
@@ -187,10 +189,10 @@ roc_auc = roc_auc_score(y_test, y_pred)
 print("ROC-AUC Score: %f" % roc_auc)
 
 
-print(history1.history.keys())
+print(history.history.keys())
 # summarize history for accuracy
-plt.plot(history1.history['accuracy'],color='blue')
-plt.plot(history1.history['val_accuracy'],color='red')
+plt.plot(history.history['accuracy'],color='blue')
+plt.plot(history.history['val_accuracy'],color='red')
 plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
@@ -198,8 +200,8 @@ plt.legend(['train', 'validation'], loc='upper left')
 
 plt.show()
 # summarize history for loss
-plt.plot(history1.history['loss'],color='blue')
-plt.plot(history1.history['val_loss'],color='red')
+plt.plot(history.history['loss'],color='blue')
+plt.plot(history.history['val_loss'],color='red')
 plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
