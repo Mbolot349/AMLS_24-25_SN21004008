@@ -57,6 +57,7 @@ y_test_text = np.array([label_map[label[0]] for label in y_test])
 #    ax.axis('off')  # Turn off the axis for better visualization
 #plt.tight_layout()
 #plt.show()
+#computes class weights
 breast_class_weights = compute_class_weight(
     class_weight='balanced',
     classes=np.unique(y_combined),
@@ -81,45 +82,24 @@ grid_search.fit(X_combined, y_combined.ravel())
 # Best parameters
 print(f"Best Parameters: {grid_search.best_params_}")
 
-# Plotting Cross-Validation Results
-results = pd.DataFrame(grid_search.cv_results_)
-scores_mean = results['mean_test_score']
-scores_std = results['std_test_score']
-params = results['params']
-
-# Extract C and gamma values
-C_values = [param['C'] for param in params]
-gamma_values = [param['gamma'] for param in params]
-kernel_values = [param['kernel'] for param in params]
-
-# Create a DataFrame for plotting
-plot_data = pd.DataFrame({
-    'mean_test_score': scores_mean,
-    'C': C_values,
-    'gamma': gamma_values,
-    'kernel': kernel_values
-})
-
-
-
-# Evaluate on the validation set
+# Evaluate on the test set
 y_test_pred = grid_search.predict(X_test)
 
 # Map predicted labels to text labels for validation set
 y_test_pred_text = np.array([label_map[label] for label in y_test_pred])
 
-# Classification Report for Validation Set
+# Classification Report for Test Set
 print("Validation Report:")
 print(classification_report(y_test_text, y_test_pred_text))
 
-# Confusion Matrix for Validation Set
+# Confusion Matrix for test Set
 cm_val = confusion_matrix(y_test_text, y_test_pred_text, labels=['malignant', 'benign/normal'])
 disp_val = ConfusionMatrixDisplay(confusion_matrix=cm_val, display_labels=['malignant', 'benign/normal'])
 disp_val.plot()
 plt.title("Confusion Matrix - Validation Data")
 plt.show()
 
-# Validation Accuracy
+# test Accuracy
 val_accuracy = accuracy_score(y_test_text, y_test_pred_text)
 print(f"Validation Accuracy: {val_accuracy * 100:.2f}%")
 
