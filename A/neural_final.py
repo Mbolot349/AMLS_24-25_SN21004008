@@ -102,7 +102,7 @@ model.add(Activation('sigmoid'))
 
 model.compile(
     loss='binary_crossentropy',
-    optimizer=keras.optimizers.SGD(),
+    optimizer=keras.optimizers.Adam(),
     metrics=['accuracy']
 )
 
@@ -113,7 +113,7 @@ custom_early_stopping = EarlyStopping(monitor='val_loss', patience=9 ,min_delta=
 
 history = model.fit(
     X_train,y_train,
-    epochs=500,
+    epochs=100,
     class_weight=weights,
     validation_data=(X_val, y_val),
     callbacks=[custom_early_stopping],
@@ -179,19 +179,6 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'validation'], loc='upper left')
 plt.show()
-
-from pathlib import Path
-
-def save_model(model, model_name):
-    # Saving neural network structure
-    model_structure = model.to_json()
-    # Saving to file
-    f = Path(f"{model_name}.json")
-    f.write_text(model_structure)
-    print(f"Model structure saved to {model_name}.json")
-
-# Save model structure
-save_model(model, "Task1_CNN")
 
 # Save model weights
 model.save_weights('weights_task1.weights.h5')
