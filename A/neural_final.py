@@ -73,16 +73,15 @@ print("Shape of a single image:", X_train[0].shape)
 
 
 model = Sequential()
-#model.add(layers.RandomFlip("horizontal_and_vertical", input_shape=(X_train[0].shape)))
+
 model.add(Conv2D(32, (3,3), input_shape=(X_train[0].shape),activation='relu'))
-#model.add(Activation('relu'))
-#model.add(BatchNormalization())
+
 model.add(MaxPooling2D(pool_size=(2,2)))
 
 model.add(Conv2D(64, (3,3), kernel_initializer='he_uniform',activation='relu',kernel_regularizer='l2'))#))
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.1))
-model.add(Conv2D(128, (3,3), kernel_initializer='he_uniform'))#)),kernel_regularizer='l2',activation='relu'
+model.add(Conv2D(128, (3,3), kernel_initializer='he_uniform'))
 model.add(MaxPooling2D(pool_size=(2,2)))
 
 model.add(Dropout(0.25))
@@ -99,27 +98,6 @@ model.add(Activation('sigmoid'))
 
 
 
-'''
-model.add(Conv2D(32, (3,3), input_shape=(X_train[0].shape)))
-model.add(Activation('relu'))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Dropout(0.1))
-model.add(Conv2D(64, (3,3), kernel_initializer='he_uniform', strides=[2,2],kernel_regularizer='l2'))
-model.add(Dropout(0.3))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2,2)))
-
-model.add(Conv2D(128, (3, 3), activation='relu'))
-
-
-model.add(Flatten())
-model.add(Dense(128,kernel_regularizer='l2'))
-model.add(Dropout(0.5))
-model.add(Activation('relu'))
-model.add(Dense(1))
-model.add(Activation('sigmoid'))
-'''
 model.compile(
     loss='binary_crossentropy',
     optimizer=keras.optimizers.SGD(),
