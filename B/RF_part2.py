@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.utils.class_weight import compute_class_weight
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
@@ -13,6 +13,7 @@ from sklearn.metrics import (
     jaccard_score,
     roc_auc_score,
 )
+from sklearn.utils import class_weight
 from sklearn.utils.class_weight import compute_class_weight
 from medmnist import BloodMNIST, INFO
 import joblib
