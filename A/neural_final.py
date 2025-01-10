@@ -126,7 +126,7 @@ A=model.evaluate(X_test, y_test)
 
 
 y_pred=model.predict(X_test) 
-#y_pred1
+
 y_pred1= y_pred.round()
 
 cm = confusion_matrix(y_test, y_pred1)
