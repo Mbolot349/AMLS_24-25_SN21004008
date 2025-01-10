@@ -68,7 +68,6 @@ label_map = {"0": "basophil",
  #       plt.title(f"Class {y_train[i][0]}")  # Access the label
   #  plt.show()
 
-#visualize(X_train, y_train)
 
 from sklearn.utils import class_weight
 import numpy as np
