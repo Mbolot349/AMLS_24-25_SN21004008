@@ -2,10 +2,12 @@
 ## Abstract
 This repository contains the code for the ELEC0134 Coursework (2024-2025). The project is divided into two parts.
 
-**Part 1 - BreastMNIST**
+**Part 1 - BreastMNIST**:
+
 The first task is a binary classification task focusing on identifying malignant or bening/normal tissues from ultrasound images of breast tissue. The dataset contains 780 greyscale images split into a ratio of 7 : 1 : 2 of training : validation : testing with labels 0: malignant, 1: normal/benign. Folder "A" contains the code for training the models. The models compared for this task are Support Vector Machine (SVM), Random Forest (RF) and convolutional neural network CNN. 
 
-**Part 2 - BloodMNIST**
+**Part 2 - BloodMNIST**:
+
 The second task is a multi-class classification task focusing on identifying different types of blood cell types. The dataset contains 17,092 red-green-blue images split into a ratio of 7 : 1 : 2 of training : validation : testing with labels 0: basophil, 1: eosinophil, 2: erythroblast, 3: immature granulocytes(myelocytes, metamyelocytes and promyelo-cytes), 4: lymphocyte, 5: monocyte, 6: neutrophil, 7: plate-let. Folder "B" contains the code for training the models. The models compared for this task are RF model and CNN model. 
 
 The file of this reporitory is organised as follows:
