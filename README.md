@@ -73,6 +73,8 @@ After downloading and extracting the folder and navigating to the repository in 
 
 The following command can then be run in the terminal window to execute the main.py file showing the project: ``` python main.py```
 
+NOTE: This project utilizes the MedMNIST api hence installing the physical npz dataset files (BreastMNIST.npz/BloodMNIST.npz) is not required and the data is split into training,validation and testing sets as per the MedMNIST original dataset. The code is tested on the respective datasets TEST split of the data.
+
     
   
  
