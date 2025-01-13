@@ -10,15 +10,49 @@ The first task is a binary classification task focusing on identifying malignant
 
 The second task is a multi-class classification task focusing on identifying different types of blood cell types. The dataset contains 17,092 red-green-blue images split into a ratio of 7 : 1 : 2 of training : validation : testing with labels 0: basophil, 1: eosinophil, 2: erythroblast, 3: immature granulocytes(myelocytes, metamyelocytes and promyelo-cytes), 4: lymphocyte, 5: monocyte, 6: neutrophil, 7: plate-let. Folder "B" contains the code for training the models. The models compared for this task are RF model and CNN model. 
 
-The file of this reporitory is organised as follows:
-* AMLS_24-25_SN21004008:
-  *README.md
-  *A:
-    *svm_part1.py : Python file used to train the SVM model
-    *random_forest_final.py : Python file used to train RF model
-    *neural_final.py : Python file used to train CNN model
-    *my_random_forest_part1.joblib : Saved RF model in joblib format
-    *random_forest_part1_load.py : Python file used to load and test the RF model saved (to save time as execution time can be long)
-    *task1.keras : Keras model file of the CNN model
-    *weights_task1.weights.h5 : h5 file containg model weights for CNN in part 1
-    *load_CNN_part1.py : Python file to load and test the CNN model trained in neural_final.py
+The file of this repository is organised as follow:
+
+- AMLS_24-25_SN21004008:
+
+  - README.md: Contains some information about the repository.
+
+  - "A" Folder: This folder contains all the files for Task 1, which are:
+    
+    ± svm_part1.py: This Python file is used to train the SVM model.
+    
+    ± random_forest_final.py: This Python file is used to train the RF model.
+    
+    ± neural_final.py: This Python file is used to train the CNN model.
+    
+    ± my_random_forest_part1.joblib: Saved RF model in joblib format.
+    
+    ± random_forest_part1_load.py: This Python file is used to load and test the RF model (to save time as execution time can be long).
+    
+    ± task1.keras: Keras model file for the CNN model.
+    
+    ± weights_task1.weights.h5: h5 file containing model weights for the CNN in part 1.
+    
+    ± load_CNN_part1.py: This Python file is used to load and test the CNN model trained in neural_final.py.
+
+  - "B" Folder: This folder contains all the files for Task 2, which are:
+    
+     ± RF_part2.py: This Python file is used to train the RF model.
+
+     ±  part2_CNN.py: This Python file is used to train the CNN model.
+
+    ±  my_random_forest_part2.joblib: Saved RF model in joblib format.
+
+    ± random_forest_part2_load.py: This Python file is used to load and test the RF model (to save time as execution time can be long).
+
+    ± task2.keras: Keras model file for the CNN model.
+    
+    ± weights_task2.weights.h5: h5 file containing model weights for the CNN in part 2.
+
+    ± load_CNN_part2.py: This Python file is used to load and test the CNN model trained in part2_CNN.py.
+
+  - requirments.txt: Requirements file containing necessary libraries to run the project
+    
+  - main.py: This Python code is used to run the project overall containing all section.
+    
+  - "Dataset": This folder is kept empty due to the fact that the MedMNIST api is used to load the BreastMNIST and BloodMNIST datasets.
+ 
