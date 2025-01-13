@@ -1,5 +1,5 @@
 # ELEC0134-AMLS_24-25_SN21004008
-## Abstract
+## Overiview
 This repository contains the code for the ELEC0134 Coursework (2024-2025). The project is divided into two parts.
 
 **Part 1 - BreastMNIST**:
