@@ -51,8 +51,28 @@ The file of this repository is organised as follow:
     ± load_CNN_part2.py: This Python file is used to load and test the CNN model trained in part2_CNN.py.
 
   - requirments.txt: Requirements file containing necessary libraries to run the project
-    
+     
   - main.py: This Python code is used to run the project overall containing all section.
+  
+   - "Dataset": This folder is kept empty due to the fact that the MedMNIST api is used to load the BreastMNIST and BloodMNIST datasets.
+
+## Library requirements and instructions 
+
+The following libraries are required to execute the following code :
+numpy
+pandas
+matplotlib
+tensorflow
+keras
+scikit-learn
+medmnist
+joblib
+pathlib
+
+After downloading and extracting the folder and navigating to the repository in the terminal windwo the requirements can be installed from requirments.txt, installed by running the following command in the terminal:  ``` pip install -r requirements.txt```
+
+The following command can then be run in the terminal window to execute the main.py file showing the project: ``` python main.py```
+
     
-  - "Dataset": This folder is kept empty due to the fact that the MedMNIST api is used to load the BreastMNIST and BloodMNIST datasets.
+  
  
