@@ -50,7 +50,7 @@ y_test_text = np.array([label_map[label[0]] for label in y_test])
 
 
 y_train_1d = y_train.flatten()
-
+##computing classs weights
 breast_class_weights = compute_class_weight(
     class_weight='balanced',
     classes=np.unique(y_train_1d),
@@ -63,7 +63,7 @@ print(f"Class weights for imbalance {weights}")
 
 
 
-
+##printing shpaes of data
 print("X Train: ", X_train.shape)
 print("Y Train: ", y_train.shape)
 
@@ -99,7 +99,7 @@ model.add(Dense(1))
 model.add(Activation('sigmoid'))
 
 
-
+#compile the model
 model.compile(
     loss='binary_crossentropy',
     optimizer=keras.optimizers.Adam(),
@@ -110,7 +110,7 @@ model.summary()
 
 
 custom_early_stopping = EarlyStopping(monitor='val_loss', patience=9 ,min_delta=0.001)#,
-
+#fit the modedl
 history = model.fit(
     X_train,y_train,
     epochs=100,
@@ -120,7 +120,7 @@ history = model.fit(
     shuffle=True
 )
 
-
+#evaluate the model
 A=model.evaluate(X_test, y_test)
 
 
