@@ -24,7 +24,7 @@ from medmnist import BloodMNIST, INFO
 
 info = INFO['bloodmnist']
 print(info)
-# Load train, validation, and test splits from BreastMNIST
+# Load train, validation, and test splits from BloodMNIST
 train_data = BloodMNIST(split='train', download=True)
 val_data = BloodMNIST(split='val', download=True)
 test_data = BloodMNIST(split='test', download=True)
@@ -123,9 +123,9 @@ model.add(Dense(8))
 model.add(Activation('softmax'))
 
 
-
+#compile model
 model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.Adam(), metrics=['accuracy'])
-#=================================== Print the model Summary =============
+#Print the model Summary
 model.summary()
 
 datagen = ImageDataGenerator(
@@ -135,11 +135,11 @@ datagen = ImageDataGenerator(
         height_shift_range=0,  
         horizontal_flip=True,  
         vertical_flip=True)
-#====================== Fitting the data Augmntation =================
+#Fitting the data Augmntation
 
 datagen.fit(X_train)
 
-#============================= Fitting the model with flow the data Augmented 
+#itting the model with flow the data Augmented 
 history = model.fit(
     datagen.flow(X_train, y_train, batch_size=32,shuffle=True),
     steps_per_epoch = math.ceil(len(X_train) / 32),
@@ -147,7 +147,6 @@ history = model.fit(
     validation_data=(X_val, y_val),
     validation_steps=len(X_val) // 32,
     shuffle=True,
-   # callbacks=[custom_early_stopping]
 )
 
 
