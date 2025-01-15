@@ -20,7 +20,7 @@ import joblib
 
 info = INFO['bloodmnist']
 print(info)
-# Load train, validation, and test splits from BreastMNIST
+# Load train, validation, and test splits from BloodMNIST
 train_data = BloodMNIST(split='train', download=True)
 val_data = BloodMNIST(split='val', download=True)
 test_data = BloodMNIST(split='test', download=True)
@@ -91,9 +91,10 @@ print("X test",X_test.shape)
 acc_test_list = []
 max_depth_list = []
 max_features_list = []
+#grid search for optimal hyperparameters
 
-for max_depth in range(10, 30):  # Range for max_depth
-    for max_features in range(10, 30):  # Range for max_features
+for max_depth in range(10, 30):  #Range for max_depth
+    for max_features in range(10, 30):  #Range for max_features
         print(f"Evaluating max depth={max_depth}, max features={max_features}")
         classifier = RandomForestClassifier(
             max_depth=max_depth, 
