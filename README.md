@@ -8,7 +8,7 @@ The first task is a binary classification task focusing on identifying malignant
 
 **Part 2 - BloodMNIST**:
 
-The second task is a multi-class classification task focusing on identifying different types of blood cell types. The dataset contains 17,092 red-green-blue images split into a ratio of 7 : 1 : 2 of training : validation : testing with labels 0: basophil, 1: eosinophil, 2: erythroblast, 3: immature granulocytes(myelocytes, metamyelocytes and promyelo-cytes), 4: lymphocyte, 5: monocyte, 6: neutrophil, 7: platelet. Folder "B" contains the code for training the models. The models compared for this task are RF model and CNN model. 
+The second task is a multi-class classification task focusing on identifying different types of blood cell types. The dataset contains 17,092 red-green-blue images split into a ratio of 7 : 1 : 2 of training : validation : testing with labels 0: basophil, 1: eosinophil, 2: erythroblast, 3: immature granulocytes (myelocytes, metamyelocytes and promyelo-cytes), 4: lymphocyte, 5: monocyte, 6: neutrophil, 7: platelet. Folder "B" contains the code for training the models. The models compared for this task are RF model and CNN model. 
 
 The file of this repository is organised as follow:
 
